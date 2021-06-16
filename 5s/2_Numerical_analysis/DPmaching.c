@@ -9,7 +9,7 @@ int main(void) {
 	FILE *fp,*fp2;
 	int frame_tpl[100] = {}; 			//テンプレートのフレーム数
 	int frame_miti[100] = {}; 			//未知数のフレーム数
-	int k=0, x=0; 						//k:フレーム数取得で使ってる x:データの読み取り
+	int k=0, x=0, y=0; 						//k:フレーム数取得で使ってる x:データの読み取り
 	double data_tpl[100][i][j] = {};
 	double data_miti[100][i][j] = {};
 
@@ -44,10 +44,10 @@ int main(void) {
 	fclose(fp);
 	printf("%lf\n", data_tpl[0][0][0]);
 
-	for(int a=001; a<=100; a++){		//i=テキスト番号
+	for(int a=1,z=0; a<=100,z<100; a++,z++){		//i=テキスト番号
 		char filename[100];
 		sprintf(filename, "city012/city012_%03d.txt", a);
-		char str[N];
+		char str[N], chr[]={};
 
 		fp2 = fopen(filename, "r");
 		if(fp2 == NULL) {
@@ -63,7 +63,17 @@ int main(void) {
 			}
 		}
 		k++;
+
+		for(int t=0; t<frame_miti[y]; t++){ //t:行数:4行目から読み込みデータ格納
+			for(int c=0; c<15; c++){        //c:dimention数
+				fscanf(fp2, "%s", &chr);
+				data_miti[z][t][c] = atof(chr);
+			}
+		}
+		y++;
 	}
 	fclose(fp2);
+	printf("%lf\n", data_miti[0][0][0]);
+
 	return 0;
 }
