@@ -13,7 +13,7 @@ int main(void) {
 	double data_tpl[100][i][j] = {};
 	double data_miti[100][i][j] = {};
 
-	for(int a=1; a<=100; a++){		//i=テキスト番号
+	for(int a=1,z=0; a<=100,z<100; a++,z++){		//i=テキスト番号
 		char filename[100];
 		sprintf(filename, "city011/city011_%03d.txt", a);
 		char str[N], chr[] = {};
@@ -36,13 +36,13 @@ int main(void) {
 		for(int t=0; t<frame_tpl[x]; t++){ //t:行数:4行目から読み込みデータ格納
 			for(int c=0; c<15; c++){        //c:dimention数
 				fscanf(fp, "%s", &chr);
-				data_tpl[a][t][c] = atof(chr);
+				data_tpl[z][t][c] = atof(chr);
 			}
 		}
 		x++;
 	}
 	fclose(fp);
-	printf("%lf\n", data_tpl[1][0][0]);
+	printf("%lf\n", data_tpl[0][0][0]);
 
 	for(int a=001; a<=100; a++){		//i=テキスト番号
 		char filename[100];
