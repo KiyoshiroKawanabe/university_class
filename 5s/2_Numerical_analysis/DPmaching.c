@@ -41,6 +41,7 @@ int main(void) {
 		}
 		x++;
 	}
+  k=0;
 	fclose(fp);
 	printf("%lf\n", data_tpl[0][0][0]);
 
@@ -63,6 +64,7 @@ int main(void) {
 			}
 		}
 		k++;
+
 
 		for(int t=0; t<frame_miti[y]; t++){ //t:行数:4行目から読み込みデータ格納
 			for(int c=0; c<15; c++){        //c:dimention数
